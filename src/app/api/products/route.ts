@@ -1,4 +1,3 @@
-// src/app/api/products/route.ts
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from "next/server";
@@ -25,7 +24,7 @@ export async function GET() {
       location:      s.warehouse.location,
       total:         s.total,
       reserved:      s.reserved,
-      available:     s.total - s.reserved, // what the customer can actually buy
+      available:     s.total - s.reserved,
     })),
   }));
 
