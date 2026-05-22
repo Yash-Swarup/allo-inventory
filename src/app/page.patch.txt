@@ -1,0 +1,39 @@
+// NOTE: Add this block to the `reserve` function in src/app/page.tsx
+// after `const reservation = await res.json();` and before `router.push(...)`:
+//
+//   sessionStorage.setItem(`reservation:${reservation.id}`, JSON.stringify(reservation));
+//
+// This lets the checkout page rehydrate reservation details without a separate GET endpoint.
+// The full updated reserve() function should read:
+
+/*
+async function reserve(productId: string, warehouseId: string) {
+  const key = `${productId}:${warehouseId}`;
+  setReserving(key);
+  setApiError(null);
+
+  const res = await fetch("/api/reservations", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ productId, warehouseId, quantity: 1 }),
+  });
+
+  if (res.status === 409) {
+    const data = await res.json();
+    setApiError(data.message ?? "Not enough stock.");
+    setReserving(null);
+    return;
+  }
+
+  if (!res.ok) {
+    setApiError("Something went wrong. Please try again.");
+    setReserving(null);
+    return;
+  }
+
+  const reservation = await res.json();
+  // Store for checkout page rehydration
+  sessionStorage.setItem(`reservation:${reservation.id}`, JSON.stringify(reservation));
+  router.push(`/reservation/${reservation.id}`);
+}
+*/
