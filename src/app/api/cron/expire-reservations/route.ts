@@ -2,6 +2,7 @@
 //
 // Registered in vercel.json as a cron that runs every minute.
 // Secured with a shared secret so only Vercel's scheduler can call it.
+export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
